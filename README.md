@@ -255,6 +255,9 @@ sudo systemctl reload php-fpm
 
 Дальше специально сломала шаблон и обновила сервер — главная страница стала отдавать ошибку 500.  
 При этом `/health` продолжал отвечать `ok`.
+**Скриншот — ошибка 500 после поломки**
+
+![Ошибка 500](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsuleerror.png)
 
 Потом через `git revert` отменила ошибочное изменение, снова обновила сервер — сайт заработал.
 
