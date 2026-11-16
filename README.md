@@ -279,17 +279,21 @@ sudo systemctl reload php-fpm
 
 Примерно 5–10 минут. Сократить время можно с помощью автоматических тестов, CI/CD и автоматического отката при ошибках.
 
-### Задание 14. Архитектура и ADR
+## Задание 14. Архитектура и ADR
 
-Подготовила схему работы приложения:
+### Схема архитектуры
 
-**Пользователь → nginx → PHP-FPM → PostgreSQL**
+![Архитектура TimeCapsule](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/architecture.png)
 
-Исходный код приложения хранится в GitHub и загружается на сервер при обновлении.
+На схеме показано:
+- Пользователь обращается к nginx (порт 80)
+- nginx передаёт запросы в PHP-FPM (приложение TimeCapsule)
+- PHP-FPM работает с PostgreSQL (localhost:5432)
+- Код обновляется с GitHub через `git pull` + composer
 
-ADR с описанием выбранного способа развёртывания:
+### ADR
 
-[docs/adr/0001-deploy-method.md](docs/adr/0001-deploy-method.md)
+Файл ADR: [docs/adr/0001-deploy-method.md](docs/adr/0001-deploy-method.md)
 
 ---
 
