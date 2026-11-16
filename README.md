@@ -204,20 +204,27 @@ PostgreSQL настроен для локального доступа с сер
 
 Чтобы не публиковать пароли и другие секретные данные вместе с исходным кодом.
 
-### Задание 11. Настройка nginx и PHP-FPM
 
-Настроила nginx для работы с PHP-FPM и проверила приложение.
+## Задание 11. Настройка PHP-FPM и nginx
 
-Также проверила адрес `/health`, который используется для проверки доступности приложения и базы данных.
+Настроила nginx и PHP-FPM. Открыла приложение в браузере — появилась страница входа TimeCapsule.  
+Зарегистрировалась, создала капсулу с файлом. Проверила `/health` — всё работает.
 
-**Скриншоты**
+**Скриншот — страница входа**
 
-![Nginx Configuration](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/Снимок%20экрана%202026-10-12%20172628.png)
+![Страница входа](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule-login.png)
 
-![Application](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/Снимок%20экрана%202026-10-12%20200900.png)
+**Скриншот — личный кабинет (My capsules)**
 
-![Health Check](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/Снимок%20экрана%202026-10-12%20201648.png)
+![My capsules](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule-mycapsules.png)
 
+**Скриншот — капсула создана и запечатана**
+
+![Капсула запечатана](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule-sealed.png)
+
+**Скриншот — капсула открылась, файл можно скачать**
+
+![Капсула открыта](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule-opened.png)
 ### Задание 12. Обновление приложения
 
 Для обновления приложения использовала Git и Composer:
@@ -236,40 +243,22 @@ sudo systemctl reload php-fpm
 
 Если не установить зависимости через Composer, приложение может перестать работать.
 
-### Задание 13. Проверка обновления, ошибка и откат
+## Задание 13. Новая версия, поломка и откат
 
-Сначала проверила работу приложения: зарегистрировала пользователя и создала капсулу.
+Сначала проверила, что сайт работает: зарегистрировалась и создала капсулу.  
+Потом добавила своё имя в подвал страницы (`Made by Evelina`), запушила в GitHub и обновила сервер.  
+Имя появилось, старые данные остались.
 
-Затем:
+**Скриншот — новая версия с моим именем в подвале**
 
-1. Добавила своё имя в подвал страницы.
-2. Отправила изменения в GitHub.
-3. Обновила сервер через `git pull`.
-4. Проверила, что изменения появились, а данные сохранились.
+![С именем в подвале](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule-with-name.png)
 
-После этого специально добавила синтаксическую ошибку в PHP-шаблон. Главная страница начала возвращать ошибку 500.
+Дальше специально сломала шаблон и обновила сервер — главная страница стала отдавать ошибку 500.  
+При этом `/health` продолжал отвечать `ok`.
 
-При этом `/health` продолжал отвечать `ok`, поскольку проверял доступность PHP и базы данных, но не правильность работы всех страниц.
+Потом через `git revert` отменила ошибочное изменение, снова обновила сервер — сайт заработал.
 
-**Откат изменений:**
 
-На локальном компьютере:
-
-```bash
-git revert <коммит>
-git push
-```
-
-На сервере:
-
-```bash
-cd /var/www/timecapsule
-git pull
-composer install --no-dev
-sudo systemctl reload php-fpm
-```
-
-После отката сайт снова заработал.
 
 **Вопрос:** Почему `/health` отвечал ok, хотя сайт не работал?
 
