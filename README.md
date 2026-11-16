@@ -212,19 +212,19 @@ PostgreSQL настроен для локального доступа с сер
 
 **Скриншот — страница входа**
 
-![Страница входа](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule-login.png)
+![Страница входа](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule1.png)
 
 **Скриншот — личный кабинет (My capsules)**
 
-![My capsules](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule-mycapsules.png)
+![My capsules](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule2.png)
 
 **Скриншот — капсула создана и запечатана**
 
-![Капсула запечатана](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule-sealed.png)
+![Капсула запечатана](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule3.png)
 
-**Скриншот — капсула открылась, файл можно скачать**
+**Скриншот — капсула открылась**
 
-![Капсула открыта](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule-opened.png)
+![Капсула открыта](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule5.png)
 ### Задание 12. Обновление приложения
 
 Для обновления приложения использовала Git и Composer:
@@ -251,7 +251,7 @@ sudo systemctl reload php-fpm
 
 **Скриншот — новая версия с моим именем в подвале**
 
-![С именем в подвале](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule-with-name.png)
+![С именем в подвале](https://raw.githubusercontent.com/Cloud-Computing-Evelina/lab2/main/screenshots/timecapsule4.png)
 
 Дальше специально сломала шаблон и обновила сервер — главная страница стала отдавать ошибку 500.  
 При этом `/health` продолжал отвечать `ok`.
